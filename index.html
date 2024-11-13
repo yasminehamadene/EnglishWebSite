@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Master 2</title>
+    <!-- Lien pour les drapeaux -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.7.0/css/flag-icons.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 0;
+            margin-bottom: 100px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #822287 0%, #9975ec 100%);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        /* Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 1500px;
+            margin: 20px auto;
+            margin-bottom: 30px;
+            
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 3px solid white;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-color: #1e3c72;
+        }
+        .student-name {
+            margin-top: 10px;
+            font-weight: 700;  /* Changed from 500 to 700 for bold */
+            color: #1e3c72;
+            font-size: 1.1em;  /* Slightly larger text */
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #822287 0%, #9975ec 100%);
+            color: white;
+            text-align: center;
+            padding: 3px;
+            margin-top: auto;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        footer a:hover {
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .gallery {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Team Group</h1>
+        <p>Promotion 2024</p>
+    </header>
+
+    <div class="gallery">
+        <div class = "gallery-item">
+        <img src="Photos\Yasmine-Hamadene.jpg" onclick="window.location.href='details.html?id=14'" alt="Hamadene">
+        <p class="student-name">Yasmine HAMADENE</p>
+        </div>
+
+        <div class = "gallery-item">
+        <img src="Photos\Louiza.jpeg" onclick="window.location.href='details.html?id=5'" alt="Louiza BELARIF">
+        <p class="student-name">Louiza BELARIF</p>
+        </div>
+        <div class = "gallery-item">
+        <img src="Photos\Kaoutar.jpg" onclick="window.location.href='details.html?id=6'" alt="Kaoutar BENAMEUR">
+        <p class="student-name">Kaoutar BENAMEUR</p>
+        </div>
+        <div class = "gallery-item">
+        <img src="Photos\Lucas.jpg" onclick="window.location.href='details.html?id=12'" alt="Lucas Leculier">
+        <p class="student-name">Lucas LECULIER</p>
+        </div>
+        <div class = "gallery-item">
+        <img src="Photos\Ambroise.png" onclick="window.location.href='details.html?id=11'" alt="Pouwedeou Kilimou"> 
+        <p class="student-name">Pouwedeou KILIMO</p>
+        </div>
+        <div class = "gallery-item">
+        <img src="Photos\Asta.png" onclick="window.location.href='details.html?id=2'" alt="Ahmadou ASTAGRAM">
+        <p class="student-name">Ahmadou ASTAGRAM</p>
+        </div>
+        <div class = "gallery-item">
+            <img src="Photos\Romain.png" onclick="window.location.href='details.html?id=3'" alt="Romain BALZANO">
+            <p class="student-name">Romain BALZANO</p>
+        </div>
+        <div class = "gallery-item">
+        <img src="Photos\Yahaya.png" onclick="window.location.href='details.html?id=4'" alt="Yahaya BATHILY">
+        <p class="student-name">Yahaya BATHILY</p>
+        </div>
+        <div class = "gallery-item">
+        <img src="Photos\Ilyas.png" onclick="window.location.href='details.html?id=7'" alt="Ilyas BENSALEM">
+        <p class="student-name">Ilyas BENSALEM</p>  
+        </div>
+        <div class = "gallery-item">
+        <img src="Photos\Bovy Thomas.png" onclick="window.location.href='details.html?id=8'" alt="Thomas BOVY">
+        <p class="student-name">Thomas BOVY</p>
+        </div>
+        <div class = "gallery-item">
+        <img src="Photos\Anthony Colin.png" onclick="window.location.href='details.html?id=9'" alt="Anthony Colin">
+        <p class="student-name">Anthony Colin</p>
+        </div>
+        <div class = "gallery-item">
+        <img src="Photos\Marie.png" onclick="window.location.href='details.html?id=10'" alt="Marie Eveille">
+        <p class="student-name">Marie EVEILLE</p>
+        </div>
+        <div class = "gallery-item">
+        <img src="Photos\Livia.png" onclick="window.location.href='details.html?id=25'" alt="Livia Grazietti">
+        <p class="student-name">Livia GRAZIETTI</p>
+        </div>
+        <div class = "gallery-item">
+        <img src="Photos\Ismael.png" onclick="window.location.href='details.html?id=1'" alt="Mohamed Ismael Otban">
+        <p class="student-name">Mohamed ISMAEL OTBAN</p>
+        </div>
+        
+        <div class = "gallery-item">
+        <img src="Photos\Antony.png" onclick="window.location.href='details.html?id=13'" alt="Anthony Marchiselli">
+        <p class="student-name">Anthony MARCHISELLI</p>
+        </div>
+        <div class = "gallery-item">
+        <img src="Photos\Theo.png" onclick="window.location.href='details.html?id=15'" alt="Theo PIACENTINI">
+        <p class="student-name">Theo PIACENTINI</p>
+        </div>
+        <div class = "gallery-item">
+        <img src="Photos\Pasquale.png" onclick="window.location.href='details.html?id=17'" alt="Pascal VIGNEAU">
+        <p class="student-name">Pascal VIGNEAU</p>
+        </div>
+        <div class = "gallery-item">
+        <img src="Photos\Paul Antoine.png" onclick="window.location.href='details.html?id=18'" alt="Paul-antoine VINCIGUERRA">
+        <p class="student-name">Paul-antoine VINCIGUERRA</p>
+        </div>
+        <div class = "gallery-item">
+        <img src="Photos\Chaker Yaakoub.png" onclick="window.location.href='details.html?id=19'" alt="Chaker YAAKOUB">
+        <p class="student-name">Chaker YAAKOUB</p>
+        </div>
+        <div class = "gallery-item">
+        <img src="Photos\Antoine.png" onclick="window.location.href='details.html?id=20'" alt=" Antoine MARESCHAL-BALLE">
+        <p class="student-name"> Antoine MARESCHAL-BALLE</p>
+        </div>
+        <div class = "gallery-item">
+        <img src="Photos\Donat.png" onclick="window.location.href='details.html?id=22'" alt="Donat Fortini">
+        <p class="student-name">Donat FORTINI</p>
+        </div>
+        <div class = "gallery-item">
+        <img src="Photos\Thomas.png" onclick="window.location.href='details.html?id=23'" alt="Thomas Garau">
+        <p class="student-name">Thomas GARAU</p>
+    </div>
+
+    <footer>
+        <p>© 2024 Team Group</p>
+        <div>
+           
+            <a href="#">Legal Mentions</a>
+        </div>
+    </footer>
+</body>
+</html>

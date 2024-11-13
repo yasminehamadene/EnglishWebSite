@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #e8f0fe;
+            background: #f5f5f5;  /* gris très clair */
+            background: #fff5f5;  /* rose très clair */
+            background: #f0fff4;  /* vert très clair */
+            
+            background: #f0f2f5;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .flag-icon {
+            width: 40px;
+            height: 20px;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+        .nationality-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 15px;
+        }
+        
+
+        .profile-container {
+            display: flex;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .profile-image {
+            flex: 0 0 400px;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .profile-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .profile-info {
+            flex: 1;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .profile-name {
+            font-size: 2.5em;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #1e3c72;
+            padding-bottom: 10px;
+        }
+
+        .info-section {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            color: #34495e;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #822287 0%, #9975ec 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: background 0.3s;
+        }
+        .info-section .info-value:last-child {
+            margin-bottom: 0;
+        }
+
+        .back-button:hover {
+            background: #b691b5;
+        }
+
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+            }
+
+            .profile-image {
+                flex: none;
+                width: 100%;
+            }
+
+            .container {
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">←Back to gallery</a>
+        <div class="profile-container" id="profileDetails"></div>
+    </div>
+
+
+    <script>
+        const profiles = [
+            {
+                id: 1,
+                firstName: "Mohamed",
+                lastName: "Ismael Otban",
+                birthDate: "2003-01-06",
+                placeOfBirth: "Djibouti-Ville, Djibouti",
+                nationality: "dj",
+                codingStrengths: "React, Javascript, Java",
+                codingWeaknesses: "Assembly, Swift, Angular",
+                image: "Photos/Ismael.png",
+                biggestAchievementsInCoding: "Created an innovative full-stack web application...",
+                interestingFunFact: "Ismael once hacked a game to create a personalized version just for his friends"
+            },
+            {
+                "id": 14,
+                "firstName": "Yasmine",
+                "lastName": "HAMADENE",
+                "birthDate": "2000-04-02",
+                "placeOfBirth": "Bejaia, Algeria",
+                "nationality": "dz",
+                "codingStrengths": "Javascript, Python, PostGreSql, SpringBoot",
+                "codingWeaknesses": "Perl, Visual Basic",
+                "image": "Photos/Yasmine-Hamadene.jpg",
+                "biggestAchievementsInCoding": "Participated in the EDF Hackathon, where I led the development of an interactive game to promote energy conservation. The project involved collaborating with a team under tight deadlines to create an engaging tool that educates users on reducing electricity waste. This experience sharpened my teamwork, coding, and project management skills while contributing to a meaningful cause.",
+                "interestingFunFact": "I love helping others! I'm always ready to guide newcomers through all the steps they need, whether it's about school, life in general, or anything they need advice on.",
+                "AboutMe": "Hello,I'm currently studying fullstack  developement at University of Corsica. My passion lies in technology and innovation, especially in areas like software development, web applications, and mobile solutions. Through my academic journey, I’ve developed a solid foundation in programming, with a particular focus on languages like Java, Python, and JavaScript.One of my notable projects is “Vlocso,” a vehicle rental and sales application that simplifies interactions between owners, renters, and potential buyers. Working on this project has allowed me to apply a range of technologies, including React for the frontend, Spring Boot for the backend, and Stripe for secure payments. It’s been a challenging and rewarding experience, enhancing my problem-solving abilities and teamwork skills.I also had the chance to participate in an EDF Hackathon, where I worked with a team to design a project to combat electricity waste. This experience taught me how to innovate under pressure and brought out my creativity and adaptability.Outside of academics, I enjoy reading, which help me stay balanced and inspired. I’m excited about future opportunities where I can apply my skills, learn from new challenges, and make a meaningful impact in the tech industry."    },
+            {
+                "id": 12,  
+                "firstName": "Lucas",
+                "lastName": "LECULIER",
+                "birthDate": "2002-10-21",
+                "placeOfBirth": "Bordeaux, France",
+                "nationality": "fr",
+                "codingStrengths": "React, Next.js, TypeScript",
+                "codingWeaknesses": "Ada, Prolog",
+                "image": "Photos/Lucas.jpg",
+                "biggestAchievementsInCoding": "Led the development of a cutting-edge cybersecurity platform that uses AI to detect and prevent sophisticated cyber attacks in real-time. The system has successfully prevented over $100 million in potential losses from cyber attacks and is now used by major banks and financial institutions worldwide. The project has received multiple industry awards and has been featured in leading cybersecurity publications.",
+                "interestingFunFact": "Lucas is an expert in classic movies and loves connecting coding challenges to film scenes."
+              },
+              {
+                "id": 5,
+                "firstName": "Louiza",
+                "lastName": "BELARIF",
+                "birthDate": "1995-08-21",
+                "placeOfBirth": "Algiers, Algeria",
+                "nationality": "dz",
+                "codingStrengths": "Angular, TypeScript, Firebase",
+                "codingWeaknesses": "C, Assembly",
+                "image": "Photos/Louiza.jpeg",
+                "biggestAchievementsInCoding": "Architected and implemented a cutting-edge smart city management system that revolutionized urban planning and resource management. The system integrates IoT sensors, real-time data analytics, and machine learning to optimize traffic flow, energy consumption, and waste management. Implemented in three major cities, the project has resulted in a 30% reduction in traffic congestion and a 25% decrease in energy consumption. This achievement led to multiple speaking engagements at smart city conferences worldwide.",
+                "interestingFunFact": "Louiza is like the big sister of the class! Always there to help and share her passion for AI, she makes complex concepts seem easy"
+              },
+              {
+                "id": 6,
+                "firstName": "Kaoutar",
+                "lastName": "BENAMEUR",
+                "birthDate": "1999-06-19",
+                "placeOfBirth": "Algiers, Algeria",
+                "nationality": "dz",
+                "codingStrengths": "React Native, Redux, GraphQL",
+                "codingWeaknesses": "Perl, COBOL",
+                "image": "Photos/Kaoutar.jpg",
+                "biggestAchievementsInCoding": "Developed a groundbreaking mobile application that revolutionized accessibility for visually impaired users. The app uses advanced AI and voice recognition to provide real-time navigation, object recognition, and text reading capabilities. It has been downloaded over 500,000 times and received multiple accessibility awards. The project has been featured in major tech conferences and is now being used as a reference implementation for accessible mobile development.",
+                "interestingFunFact": "Kaoutar has a talent for remembering everyone's birthday, she even sets reminders on her phone months in advance.  "
+              },
+            {
+                id: 2,
+                firstName: "Ahmadou",
+                lastName: "ASTAGRAM",
+                birthDate: "1993-05-15",
+                placeOfBirth: "Younde, Cameroun",
+                nationality: "cm",
+                codingStrengths: "Python, Django, PostgreSQL",
+                codingWeaknesses: "C++, Rust",
+                nationality: "cm",
+                image: "Photos/Asta.png",
+                biggestAchievementsInCoding: "Developed a machine learning platform...",
+                interestingFunFact: "Astagam loves learning languages—she already knows five and is adding more!"
+            },
+            {
+                id: 3,
+                firstName: "Romain",
+                lastName: "BALZANO",
+                birthDate: "2001-09-23",
+                placeOfBirth: "Nice, France",
+                nationality: "fr",
+                codingStrengths: "Vue.js, Node.js, SQL",
+                codingWeaknesses: "Scala, Haskell",
+                image: "Photos/Romain.png",
+                biggestAchievementsInCoding: "Developed a revolutionary e-commerce platform that uses blockchain technology for secure transactions and supply chain tracking. The platform now serves over 1 million users across Europe and has processed transactions worth more than €100 million. The innovative approach to combining traditional e-commerce with blockchain technology has earned multiple industry awards and has been featured in major tech publications. This project has become a case study in several business schools.",
+                interestingFunFact: "Romain is the quiet one in the class, but when he does speak, it's always something worth listening to! He may not talk much, but when he does, his words are thoughtful."
+              },
+              {
+                "id": 4,
+                "firstName": "Yahaya",
+                "lastName": "BATHILY",
+                "birthDate": "2004-03-12",
+                "placeOfBirth": "Bamako, Mali",
+                "nationality": "ml",
+                "codingStrengths": "Java, Spring Boot, PostgreSQL",
+                "codingWeaknesses": "WebAssembly, Elixir",
+                "image": "Photos/Yahaya.png",
+                "biggestAchievementsInCoding": "Created an award-winning educational technology platform that has transformed how programming is taught in African schools. The platform uses gamification and interactive learning techniques to make coding accessible to students from diverse backgrounds. It has been adopted by over 200 schools across 15 African countries, reaching more than 50,000 students. The project has received funding from major tech companies and has been recognized by UNESCO for its contribution to digital literacy in developing regions.",
+                "interestingFunFact": "Yahaya is always ready to help anyone, anytime, no matter the situation! Whether it's with homework, tech problems, or even finding lost items, he's the go-to guy in the class. His superhero-like attitude makes him the most reliable person around!"
+              },
+              
+             
+              {
+                "id": 7,
+                "firstName": "Ilyas",
+                "lastName": "BENSALEM",
+                "birthDate": "1995-04-25",
+                "placeOfBirth": "Oran, Algeria",
+                "nationality": "dz",
+                "codingStrengths": "C++, Qt, Docker",
+                "codingWeaknesses": "Ruby, Dart",
+                "image": "Photos/Ilyas.png",
+                "biggestAchievementsInCoding": "Created a high-performance 3D rendering engine that revolutionized architectural visualization. The engine processes complex 3D models in real-time with photorealistic quality, reducing rendering times from hours to seconds. It's now used by over 100 architectural firms worldwide and has been instrumental in winning several major construction projects. The technology has been licensed to major software companies and has generated millions in revenue.",
+                "interestingFunFact": "Ilyas has a busy schedule, constantly traveling between Paris and Corsica for his alternance, which makes him a bit of a jet-setter."
+              },
+              {
+                "id": 8,
+                "firstName": "Thomas",
+                "lastName": "BOVY",
+                "birthDate": "2000-08-14",
+                "placeOfBirth": "Brussels, Belgium",
+                "nationality": "be",
+                "codingStrengths": "PHP, Laravel, MySQL",
+                "codingWeaknesses": "Go, R",
+                "image": "Photos/Bovy Thomas.png",
+                "biggestAchievementsInCoding": "Built a revolutionary fintech platform that has transformed microfinance in developing countries. The system uses blockchain and AI to assess creditworthiness without traditional banking history, enabling millions of unbanked individuals to access financial services. The platform has facilitated over $50 million in microloans across 12 countries and maintains a 98% repayment rate. This project has been recognized by the World Bank for its impact on financial inclusion.",
+                "interestingFunFact": "Thomas works as an alternant at EDF, which means he, so he doesn't have to pay for electricity at home!"
+              },
+              
+              {
+                "id": 9,
+                "firstName": "Anthony",
+                "lastName": "COLIN",
+                "birthDate": "2000-12-03",
+                "placeOfBirth": "Lyon, France",
+                "nationality": "fr",
+                "codingStrengths": "Swift, iOS Development, Firebase",
+                "codingWeaknesses": "Lua, Fortran",
+                "image": "Photos/Anthony Colin.png",
+                "biggestAchievementsInCoding": "Developed an innovative augmented reality educational platform that has transformed how medical students learn anatomy. The app provides interactive 3D models of the human body with real-time AR overlay, allowing students to visualize and understand complex anatomical structures. It's now used in over 75 medical schools worldwide and has been credited with improving student performance by 40%. The project won several educational technology awards.",
+                "interestingFunFact": "Anthony is always laughing and has a friendly, kind personality. You can always count on him to bring a smile to the class!"
+              },
+              {
+                "id": 10,
+                "firstName": "Marie",
+                "lastName": "EVEILLE",
+                "birthDate": "2001-08-09s",
+                "placeOfBirth": "Paris, France",
+                "nationality": "fr",
+                "codingStrengths": "JavaScript, Express.js, MongoDB",
+                "codingWeaknesses": "Julia, Clojure",
+                "image": "Photos/Marie.png",
+                "biggestAchievementsInCoding": "Created a groundbreaking social impact platform that connects NGOs with volunteers and donors worldwide. The platform uses AI to match skills and resources with project needs, resulting in over 100,000 successful volunteer placements and $20 million in donations facilitated. The system has been particularly crucial during natural disasters, helping coordinate relief efforts across multiple countries.",
+                "interestingFunFact": "Marie makes the best playlists for studying, and her recommendations are so popular that they've become a class tradition!"
+              },
+              {
+                "id": 11,
+                "firstName": "Pouwedeou",
+                "lastName": "KILIMOU",
+                "birthDate": "2000-12-07",
+                "placeOfBirth": "Lome, Togo",
+                "nationality": "tg",
+                "codingStrengths": "Python, Django, AWS",
+                "codingWeaknesses": "Objective-C, Pascal",
+                "image": "Photos/Ambroise.png",
+                "biggestAchievementsInCoding": "Architected a revolutionary agricultural technology platform that uses AI and drone imagery to optimize crop yields in arid regions. The system provides real-time analysis of soil conditions, weather patterns, and crop health, increasing yields by up to 300% while reducing water usage by 40%. The platform is now used by over 10,000 farmers across Africa and has received multiple sustainability awards.",
+                "interestingFunFact": "Amboise loves to organize everything in his life from his notes to his desk and even his wardrobe!"
+              },
+              
+              {
+                "id": 13,
+                "firstName": "Anthony",
+                "lastName": "MARCHISELLI",
+                "birthDate": "2003-01-17",
+                "placeOfBirth": "Marseille, France",
+                "nationality": "fr",
+                "codingStrengths": "Kotlin, Android Development, Room",
+                "codingWeaknesses": "MATLAB, Lisp",
+                "image": "Photos/Anthony.png",
+                "biggestAchievementsInCoding": "Developed a revolutionary mobile app for emergency response coordination that has transformed disaster management. The app uses mesh networking to maintain communication even when traditional networks are down, and has been crucial in coordinating rescue efforts during major natural disasters. It's now the standard emergency response tool in over 30 countries and has helped save thousands of lives.",
+                "interestingFunFact": "Anthony can fall asleep anywhere, whether it's during class, on the bus, or even at a coffee shop!"
+              },
+              {
+                "id": 20,
+                "firstName": "Antoine",
+                "lastName": "MARESCHAL-BALLE",
+                "birthDate": "2003-04-24",
+                "placeOfBirth": "Toulouse, France",
+                "nationality": "fr",
+                "codingStrengths": "C#, .NET, SQL Server",
+                "codingWeaknesses": "Erlang, Groovy",
+                "image": "Photos/Antoine.png",
+                "biggestAchievementsInCoding": "Created an innovative AI-powered legal technology platform that has revolutionized legal research and case analysis. The system processes millions of legal documents to predict case outcomes with 92% accuracy and has reduced research time for legal professionals by 70%. It's now used by over 500 law firms worldwide and has been cited in several landmark court decisions.",
+                "interestingFunFact": "Antoine has a collection of over 100 different types of socks. He loves unique and colorful patterns."
+              },
+              {
+                "id": 15,
+                "firstName": "Theo",
+                "lastName": "PIACENTINI",
+                "birthDate": "2001-08-11",
+                "placeOfBirth": "Montpellier, France",
+                "nationality": "fr",
+                "codingStrengths": "Vue.js, Nuxt.js, PostgreSQL",
+                "codingWeaknesses": "F#, Rust",
+                "image": "Photos/Theo.png",
+                "biggestAchievementsInCoding": "Built a groundbreaking renewable energy management platform that optimizes power distribution for smart grids. The system uses machine learning to predict energy demand and automatically balance load across multiple renewable sources, reducing energy waste by 45%. The platform now manages power distribution for over 5 million households across Europe and has won multiple environmental innovation awards.",
+                "interestingFunFact": " Theo always starts his morning with a cup of tea and a motivational podcast  he's a self-care expert!"
+              },
+              {
+                "id": 16,
+                "firstName": "Vitali",
+                "lastName": "RENKAS",
+                "birthDate": "2002-12-29",
+                "placeOfBirth": "Minsk, Belarus",
+                "nationality": "ru",
+                "codingStrengths": "Java, Spring, Hibernate",
+                "codingWeaknesses": "Scala, Crystal",
+                "image": "Photos/Vitali.png",
+                "biggestAchievementsInCoding": "Developed a revolutionary enterprise-scale microservices platform that transformed legacy monolithic systems for Fortune 500 companies. The platform reduced deployment times by 90% and improved system reliability by 99.99%. It now processes over 1 billion transactions daily and has saved client companies over $50 million in operational costs. The architecture has been widely adopted as an industry standard for large-scale system modernization.",
+                "interestingFunFact": "Vitali is super clever, but he's known for only showing up to the most important practical sessions (TPs)."
+              },
+              {
+                "id": 17,
+                "firstName": "Pascal",
+                "lastName": "VIGNEAU",
+                "birthDate": "2001-03-14",
+                "placeOfBirth": "Nantes, France",
+                "nationality": "fr",
+                "codingStrengths": "Ruby on Rails, PostgreSQL, Redis",
+                "codingWeaknesses": "Haskell, Elm",
+                "image": "Photos/Pasquale.png",
+                "biggestAchievementsInCoding": "Created an innovative healthcare platform that revolutionized patient care management in developing countries. The system uses AI to diagnose common illnesses through symptom analysis and provides telemedicine services in remote areas. It has provided healthcare access to over 2 million people in rural areas and reduced diagnostic errors by 75%. The platform has been recognized by WHO as a breakthrough in accessible healthcare.",
+                "interestingFunFact": "Pascal has a bit of a short fuse, but every time he gets upset, he quickly cools down and ends up laughing about it. It's like he can't stay mad for too long!"
+              },
+              {
+                "id": 18,
+                "firstName": "Paul-antoine",
+                "lastName": "VINCIGUERRA",
+                "birthDate": "2000-07-22",
+                "placeOfBirth": "Ajaccio, France",
+                "nationality": "fr",
+                "codingStrengths": "Flutter, Dart, Firebase",
+                "codingWeaknesses": "Assembly, COBOL",
+                "image": "Photos/Paul Antoine.png",
+                "biggestAchievementsInCoding": "Pioneered a groundbreaking mobile education platform that has transformed access to quality education in underserved communities. The app uses advanced offline synchronization and adaptive learning algorithms to provide personalized education even in areas with limited connectivity. It has reached over 5 million students across 50 countries and improved academic performance by an average of 60%. The platform has received multiple UNESCO awards for innovation in education.",
+                "interestingFunFact": "Paul antoine is known as the class's big eater — he can finish a whole pizza by himself in no time!"
+              },
+              {
+                "id": 19,
+                "firstName": "Chaker",
+                "lastName": "YAAKOUB",
+                "birthDate": "1998-05-19",
+                "placeOfBirth": "Beirut, Lebanon",
+                "nationality": "lb",
+                "codingStrengths": "Go, Docker, Kubernetes",
+                "codingWeaknesses": "Perl, Visual Basic",
+                "image": "Photos/Chaker Yaakoub.png",
+                "biggestAchievementsInCoding": "Developed a revolutionary cloud-native platform for autonomous vehicle coordination that has set new standards in the industry. The system processes real-time data from millions of sensors to enable safe autonomous navigation in complex urban environments. It has reduced accident rates by 99% in pilot cities and is being adopted by major automotive manufacturers worldwide. The platform has received multiple patents and has been featured in leading technology publications.",
+                "interestingFunFact": "Yaakoub never forgets to bring snacks to class. He's the go-to person when someone's feeling hungry during study sessions."
+              },
+              
+              {
+                "id": 25,
+                "firstName": "Livia ",
+                "lastName": "GRAZIETTI",
+                "birthDate": "2002-05-19",
+                "placeOfBirth": "Corte, France",
+                "nationality": "fr",
+                "codingStrengths": "Go, Docker, Kubernetes",
+                "codingWeaknesses": "Perl, Visual Basic",
+                "image": "Photos/Livia.png",
+                "biggestAchievementsInCoding": "Developed a revolutionary cloud-native platform for autonomous vehicle coordination that has set new standards in the industry. The system processes real-time data from millions of sensors to enable safe autonomous navigation in complex urban environments. It has reduced accident rates by 99% in pilot cities and is being adopted by major automotive manufacturers worldwide. The platform has received multiple patents and has been featured in leading technology publications.",
+                "interestingFunFact": "Livia is known for finding coding bugs that no one else can spot it."
+              },
+              {
+                "id": 22,
+                "firstName": "Donat",
+                "lastName": "FORTINI",
+                "birthDate": "2002-05-19",
+                "placeOfBirth": "Paris, France",
+                "nationality": "fr",
+                "codingStrengths": "Go, Docker, Kubernetes",
+                "codingWeaknesses": "Perl, Visual Basic",
+                "image": "Photos/Donat.png",
+                "biggestAchievementsInCoding": "Developed a revolutionary cloud-native platform for autonomous vehicle coordination that has set new standards in the industry. The system processes real-time data from millions of sensors to enable safe autonomous navigation in complex urban environments. It has reduced accident rates by 99% in pilot cities and is being adopted by major automotive manufacturers worldwide. The platform has received multiple patents and has been featured in leading technology publications.",
+                "interestingFunFact": "Donat likes testing cybersecurity by trying to hack his own apps "
+              },
+              {
+                "id": 23,
+                "firstName": "Thomas",
+                "lastName": "GARAU", 
+                "birthDate": "2001-06-01",
+                "placeOfBirth": "Paris, France",
+                "nationality": "fr",
+                "codingStrengths": "Swift, iOS Development, Firebase",
+                "codingWeaknesses": "Lua, Fortran",
+                "image": "Photos/Thomas.png",
+                "interestingFunFact": "Thomas always has great movie suggestions for everyone. "
+
+              }
+            
+            // Ajoutez les autres profils ici
+        ];
+
+        function loadProfileDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const profileId = parseInt(urlParams.get('id'));
+            
+            const profile = profiles.find(p => p.id === profileId);
+            
+            if (profile) {
+                displayProfile(profile);
+            } else {
+                document.getElementById('profileDetails').innerHTML = 
+                    '<p>Profil non trouvé</p>';
+            }
+        }
+
+        function formatDate(dateString) {
+            return new Date(dateString).toLocaleDateString('fr-FR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        function displayProfile(profile) {
+            const profileDetails = document.getElementById('profileDetails');
+            
+            // Construction du HTML de base
+            let htmlContent = `
+                <div class="profile-image">
+                    <img src="${profile.image}" 
+                         alt="${profile.firstName} ${profile.lastName}"
+                         style="width: 400px; height: auto;">
+                </div>
+                
+                <div class="profile-info">
+                    <h1 class="profile-name">
+                        ${profile.firstName} ${profile.lastName} 
+                    </h1>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Birth Date</div>
+                        <div class="info-value">${formatDate(profile.birthDate)}</div>
+        
+                        <div class="info-label">Place Of Birth</div>
+                        <div class="info-value">${profile.placeOfBirth}</div>
+                    </div>
+                    <div class="nationality-container">
+                        <div class="info-label">Nationality</div>
+                        <img src="https://flagcdn.com/w20/${profile.nationality}.png" 
+                            alt="${profile.nationality} flag" 
+                            class="flag-icon">
+                    </div>
+        
+                    <div class="info-section">
+                        <div class="info-label">Coding Strengths</div>
+                        <div class="info-value">${profile.codingStrengths}</div>
+        
+                        <div class="info-label">Coding Weaknesses</div>
+                        <div class="info-value">${profile.codingWeaknesses}</div>
+                    </div>
+        
+                    <div class="info-section">
+                        <div class="info-label">Biggest Achievements In Coding</div>
+                        <div class="info-value">${profile.biggestAchievementsInCoding}</div>
+                    </div>
+        
+                    <div class="info-section">
+                        <div class="info-label">Interesting Fun Fact</div>
+                        <div class="info-value">${profile.interestingFunFact}</div>
+                    </div>`;
+        
+            // Ajouter la section About Me uniquement pour Yasmine (ID 14)
+            if (profile.id === 14) {
+                htmlContent += `
+                    <div class="info-section">
+                        <div class="info-label">About Me</div>
+                        <div class="info-value">${profile.AboutMe}</div>
+                    </div>`;
+            }
+        
+            htmlContent += `</div>`;
+            profileDetails.innerHTML = htmlContent;
+        }
+        // Assurez-vous que la fonction loadProfileDetails est bien définie
+        document.addEventListener('DOMContentLoaded', loadProfileDetails);
+        
+    </script>
+</body>
+</html>
